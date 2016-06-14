@@ -1,0 +1,42 @@
+package com.company;
+
+
+import java.util.ArrayList;
+
+public class DotCom {
+
+    private ArrayList<String> locationCells;
+    private String name;
+
+
+    //Setter Method that updates dotcoms location
+    public void setLocationCells(ArrayList<String> loc){
+        locationCells = loc;
+    }
+
+    //Setter Method
+    public void setName(String n) {
+        name = n;
+    }
+
+    //Check User guess
+    public String checkYourself(String userInput){
+        String result = "miss";
+        int index = locationCells.indexOf(userInput);
+        if (userInput.equals("hint")){
+            System.out.println("That is Cheating Try Again");
+        }
+        if(index >= 0) {
+            locationCells.remove(index);
+
+            if (locationCells.isEmpty()){
+                result ="kill";
+                System.out.println("Ouch! You Sunk " + name +" :( ");
+            }else {
+                result = "Hit";
+            }
+        }
+
+        return result;
+    }
+}
